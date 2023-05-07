@@ -5,6 +5,13 @@ import pyautogui
 
 import PySimpleGUI as sg
 
+# TODO:
+#       separeta terminal and gui version
+#       how it will work on linux
+#       create hotkey and save hotkey
+#       create sets and can save sets
+
+
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -30,13 +37,13 @@ def hotkeys():
     while True:
         key = keyboard.read_key()
         if key in otro_dict.keys():
-            mpos = pyautogui.position()
-            logging.debug(f'from position: {mpos}')
+            #mpos = pyautogui.position()
+            #logging.debug(f'from position: {mpos}')
             pyautogui.moveTo(otro_dict[key])
             pyautogui.leftClick()
             logging.debug(f'clicking in positin: {mpos}')
             logging.debug(f'to positino: {mpos}')
-            pyautogui.moveTo(mpos)
+            #pyautogui.moveTo(mpos)
         elif key == "esc":
             break
 

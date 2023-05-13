@@ -78,20 +78,19 @@ if __name__ == '__main__':
             description='perform setup hotkeys',
             epilog='create hotkeys and use')
     parser.add_argument('-b', '--back', action='store_true')
+    parser.add_argument('-x', '--escape', default='esc')
     parser.add_argument('option', type=str)
     parser.add_argument('keyset', type=str)
 
     args = parser.parse_args()
-
     if args.keyset == '.':
         args.keyset = 'keys.json'
     print(args)
 
     keys_dict = load_keys(args.keyset)
-
     match args.option:
         case 'start':
-            hotkeys(keys_dict)
+            hotkeys(keys_dict, back_to_origin=args.back, escape_key=args.escape)
         case 'set-pos':
             key, pos = set_pos()
             keys_dict[key] = pos
